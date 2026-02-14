@@ -1,0 +1,277 @@
+/**
+ * SULOC - Responsive & Mobile Optimization CSS
+ * Utilities for better mobile performance and UX
+ */
+
+/* Touch-friendly tap targets */
+.tap-target {
+    min-width: 48px;
+    min-height: 48px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Prevent text selection on buttons */
+button,
+.btn {
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+}
+
+/* Smooth scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Optimize font rendering */
+body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+}
+
+/* Responsive images */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Lazy loading placeholder */
+img[data-src] {
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+    0% {
+        background-position: 200% 0;
+    }
+
+    100% {
+        background-position: -200% 0;
+    }
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* Mobile-specific optimizations */
+@media (max-width: 768px) {
+
+    /* Larger touch targets */
+    a,
+    button,
+    input,
+    select,
+    textarea {
+        min-height: 44px;
+    }
+
+    /* Prevent zoom on input focus */
+    input,
+    select,
+    textarea {
+        font-size: 16px;
+    }
+
+    /* Optimize spacing */
+    .container {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    /* Stack navigation */
+    nav {
+        flex-direction: column;
+    }
+
+    /* Full-width buttons on mobile */
+    .btn-mobile-full {
+        width: 100%;
+    }
+}
+
+/* Connection-aware loading */
+@media (prefers-reduced-data: reduce) {
+
+    /* Disable background images on slow connections */
+    [data-bg] {
+        background-image: none !important;
+    }
+
+    /* Reduce animation */
+    * {
+        animation: none !important;
+        transition: none !important;
+    }
+}
+
+/* Print styles */
+@media print {
+    .no-print {
+        display: none !important;
+    }
+
+    a[href]:after {
+        content: " (" attr(href) ")";
+    }
+}
+
+/* Utility classes for responsive design */
+.hide-mobile {
+    display: block;
+}
+
+.show-mobile {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .hide-mobile {
+        display: none;
+    }
+
+    .show-mobile {
+        display: block;
+    }
+}
+
+/* Performance optimizations */
+.gpu-accelerated {
+    transform: translateZ(0);
+    will-change: transform;
+}
+
+/* Skeleton loading states */
+.skeleton {
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: skeleton-loading 1.5s infinite;
+    border-radius: 4px;
+}
+
+@keyframes skeleton-loading {
+    0% {
+        background-position: 200% 0;
+    }
+
+    100% {
+        background-position: -200% 0;
+    }
+}
+
+.skeleton-text {
+    height: 1em;
+    margin-bottom: 0.5em;
+}
+
+.skeleton-title {
+    height: 2em;
+    width: 60%;
+    margin-bottom: 1em;
+}
+
+.skeleton-image {
+    width: 100%;
+    height: 200px;
+}
+
+/* Optimize scrolling performance */
+.smooth-scroll {
+    -webkit-overflow-scrolling: touch;
+    overflow-y: scroll;
+}
+
+/* Reduce layout shifts */
+.aspect-ratio-16-9 {
+    position: relative;
+    padding-bottom: 56.25%;
+}
+
+.aspect-ratio-4-3 {
+    position: relative;
+    padding-bottom: 75%;
+}
+
+.aspect-ratio-1-1 {
+    position: relative;
+    padding-bottom: 100%;
+}
+
+.aspect-ratio-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Network status indicator */
+.offline-indicator {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: #f59e0b;
+    color: white;
+    padding: 0.5rem;
+    text-align: center;
+    z-index: 10000;
+    display: none;
+}
+
+.offline-indicator.show {
+    display: block;
+}
+
+/* Loading states */
+.loading-spinner {
+    border: 3px solid #f3f3f3;
+    border-top: 3px solid #0a2342;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Optimize form inputs for mobile */
+input[type="date"],
+input[type="time"],
+input[type="datetime-local"],
+input[type="month"] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+/* Better focus states for accessibility */
+*:focus-visible {
+    outline: 2px solid #0a2342;
+    outline-offset: 2px;
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+    .smooth-scroll {
+        scroll-behavior: auto;
+    }
+}

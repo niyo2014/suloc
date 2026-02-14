@@ -1,0 +1,14 @@
+.env
+error_log
+suloc_db.sqlite
+uploads/
+*OLD*
+.DS_Store
+.vscode/
+.idea/
+vendor/
+node_modules/
+*.log
+backup/
+temp/
+tmp/

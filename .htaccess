@@ -1,0 +1,38 @@
+# CICESE - Apache Configuration
+# Enable rewrite engine
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /CICESE/
+    
+    # Rewrite project-*.php URLs to project.php?slug=*
+    RewriteRule ^project-([^\.]+)\.php$ project.php?slug=$1 [L,QSA]
+    
+    # Redirect to index.php if file doesn't exist
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^admin/(.*)$ admin/$1 [L]
+</IfModule>
+
+# Enable PHP processing
+<IfModule mod_php.c>
+    php_flag display_errors On
+    php_value error_reporting E_ALL
+    php_value upload_max_filesize 64M
+    php_value post_max_size 64M
+    php_value max_execution_time 300
+    php_value max_input_time 300
+</IfModule>
+
+# Security headers
+<IfModule mod_headers.c>
+    Header set X-Content-Type-Options "nosniff"
+    Header set X-Frame-Options "SAMEORIGIN"
+</IfModule>
+
+# Prevent directory listing
+Options -Indexes
+
+# Default file
+DirectoryIndex index.php index.html
+
+
