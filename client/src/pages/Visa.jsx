@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import axios from 'axios';
 
-const (import.meta.env.VITE_API_BASE_URL || '/api') = '';
+const API_BASE_URL = (import.meta.env.VITE_API_BASE_URL || '/api');
 
 const Visa = () => {
     const { t, i18n } = useTranslation();

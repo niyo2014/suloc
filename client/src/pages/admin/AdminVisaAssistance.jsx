@@ -3,7 +3,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import axios from 'axios';
 import { MessageCircle, Edit, Eye, ArrowRight } from 'lucide-react';
 
-const (import.meta.env.VITE_API_BASE_URL || '/api') = '';
+const API_BASE_URL = (import.meta.env.VITE_API_BASE_URL || '/api');
 
 const AdminVisaAssistance = () => {
     const [requests, setRequests] = useState([]);

@@ -3,7 +3,7 @@ import axios from 'axios';
 
 const SystemContext = createContext(null);
 
-const (import.meta.env.VITE_API_BASE_URL || '/api') = import.meta.env.VITE_API_URL || '';
+ // API_BASE_URL refined
 
 export const SystemProvider = ({ children }) => {
     const [status, setStatus] = useState({

@@ -8,7 +8,7 @@ import {
 } from 'lucide-react';
 import { useSystemStatus } from '../context/SystemContext';
 
-const (import.meta.env.VITE_API_BASE_URL || '/api') = '';
+const API_BASE_URL = (import.meta.env.VITE_API_BASE_URL || '/api');
 
 const Home = () => {
     const { t, i18n } = useTranslation();

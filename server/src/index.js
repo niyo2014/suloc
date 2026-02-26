@@ -82,6 +82,15 @@ app.get('/api/health', (req, res) => {
     res.status(200).json({ status: 'ok', uptime: process.uptime() });
 });
 
+// Health check without DB
+app.get('/api/health-no-db', (req, res) => {
+    res.status(200).json({
+        status: 'online',
+        message: 'Server is running, database skiped',
+        env: process.env.NODE_ENV
+    });
+});
+
 // Routes
 app.use('/api/auth', authRoutes);
 app.use('/api/logic', logicRoutes);

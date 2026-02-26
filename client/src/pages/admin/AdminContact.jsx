@@ -7,7 +7,7 @@ import {
     ChevronDown, X, Trash
 } from 'lucide-react';
 
-const (import.meta.env.VITE_API_BASE_URL || '/api') = import.meta.env.VITE_API_URL || '';
+ // API_BASE_URL refined
 
 const AdminContact = () => {
     const [submissions, setSubmissions] = useState([]);

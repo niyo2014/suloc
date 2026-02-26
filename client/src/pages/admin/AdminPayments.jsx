@@ -8,7 +8,7 @@ import {
 import { Link } from 'react-router-dom';
 import useSystemStatus from '../../hooks/useSystemStatus';
 
-const (import.meta.env.VITE_API_BASE_URL || '/api') = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+ // API_BASE_URL refined
 
 const AdminPayments = () => {
     const { isModuleFrozen } = useSystemStatus();

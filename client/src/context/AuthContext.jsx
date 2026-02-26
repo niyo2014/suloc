@@ -3,7 +3,7 @@ import axios from 'axios';
 
 const AuthContext = createContext(null);
 
-const (import.meta.env.VITE_API_BASE_URL || '/api') = (import.meta.env.VITE_API_BASE_URL || '/api') || '/api';
+ // API_BASE_URL refined
 console.log('Effective (import.meta.env.VITE_API_BASE_URL || '/api'):', (import.meta.env.VITE_API_BASE_URL || '/api'));
 
 export const AuthProvider = ({ children }) => {
