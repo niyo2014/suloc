@@ -3,7 +3,6 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import axios from 'axios';
 import { MessageCircle, Edit, Eye, ArrowRight } from 'lucide-react';
 
-const API_BASE_URL = (import.meta.env.VITE_API_BASE_URL || '/api');
 
 const AdminVisaAssistance = () => {
     const [requests, setRequests] = useState([]);
@@ -34,7 +33,7 @@ const AdminVisaAssistance = () => {
     const fetchRequests = async () => {
         setLoading(true);
         try {
-            const response = await axios.get(`${(import.meta.env.VITE_API_BASE_URL || '/api')}/api/visas/admin/assistance?status=${filter}`, {
+            const response = await axios.get(`${API_BASE_URL}/api/visas/admin/assistance?status=${filter}`, {
                 withCredentials: true
             });
             setRequests(response.data);

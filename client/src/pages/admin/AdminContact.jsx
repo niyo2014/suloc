@@ -7,7 +7,7 @@ import {
     ChevronDown, X, Trash
 } from 'lucide-react';
 
- // API_BASE_URL refined
+ 
 
 const AdminContact = () => {
     const [submissions, setSubmissions] = useState([]);
@@ -22,7 +22,7 @@ const AdminContact = () => {
 
     const fetchSubmissions = async () => {
         try {
-            const res = await axios.get(`${(import.meta.env.VITE_API_BASE_URL || '/api')}/api/contact/admin/submissions`, {
+            const res = await axios.get(`${API_BASE_URL}/api/contact/admin/submissions`, {
                 withCredentials: true
             });
             setSubmissions(res.data);
@@ -35,7 +35,7 @@ const AdminContact = () => {
 
     const handleUpdateStatus = async (id, status) => {
         try {
-            await axios.patch(`${(import.meta.env.VITE_API_BASE_URL || '/api')}/api/contact/admin/submissions/${id}`, { status }, {
+            await axios.patch(`${API_BASE_URL}/api/contact/admin/submissions/${id}`, { status }, {
                 withCredentials: true
             });
             fetchSubmissions();
@@ -51,7 +51,7 @@ const AdminContact = () => {
         if (!window.confirm('Êtes-vous sûr de vouloir supprimer cette soumission ?')) return;
 
         try {
-            await axios.delete(`${(import.meta.env.VITE_API_BASE_URL || '/api')}/api/contact/admin/submissions/${id}`, {
+            await axios.delete(`${API_BASE_URL}/api/contact/admin/submissions/${id}`, {
                 withCredentials: true
             });
             fetchSubmissions();

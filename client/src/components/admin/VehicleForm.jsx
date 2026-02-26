@@ -49,7 +49,7 @@ const VehicleForm = () => {
 
     const fetchVehicleData = async () => {
         try {
-            const response = await axios.get(`${(import.meta.env.VITE_API_BASE_URL || '/api')}/vehicles/${id}`);
+            const response = await axios.get(`${API_BASE_URL}/vehicles/${id}`);
             const v = response.data.vehicle;
 
             setFormData({
@@ -135,7 +135,7 @@ const VehicleForm = () => {
             };
 
             if (isEditMode) {
-                await axios.put(`${(import.meta.env.VITE_API_BASE_URL || '/api')}/vehicles/admin/${id}`, data, config);
+                await axios.put(`${API_BASE_URL}/vehicles/admin/${id}`, data, config);
                 // Handle Gallery Upload separate if PUT replaces? 
                 // Our backend createVehicle handles gallery_images. 
                 // Our backend updateVehicle handles main_image replacement but NOT gallery array addition directly in the code I wrote?
@@ -146,11 +146,11 @@ const VehicleForm = () => {
                 if (galleryImages.length > 0) {
                     const galleryData = new FormData();
                     galleryImages.forEach(file => galleryData.append('gallery_images', file));
-                    await axios.post(`${(import.meta.env.VITE_API_BASE_URL || '/api')}/vehicles/admin/${id}/images`, galleryData, config);
+                    await axios.post(`${API_BASE_URL}/vehicles/admin/${id}/images`, galleryData, config);
                 }
 
             } else {
-                await axios.post(`${(import.meta.env.VITE_API_BASE_URL || '/api')}/vehicles/admin`, data, config);
+                await axios.post(`${API_BASE_URL}/vehicles/admin`, data, config);
             }
 
             navigate('/admin/vehicles');
@@ -165,7 +165,7 @@ const VehicleForm = () => {
     const handleDeleteGalleryImage = async (imageId) => {
         if (!window.confirm('Supprimer cette image ?')) return;
         try {
-            await axios.delete(`${(import.meta.env.VITE_API_BASE_URL || '/api')}/vehicles/admin/${id}/images/${imageId}`, {
+            await axios.delete(`${API_BASE_URL}/vehicles/admin/${id}/images/${imageId}`, {
                 withCredentials: true
             });
             setExistingGalleryImages(prev => prev.filter(img => img.id !== imageId));

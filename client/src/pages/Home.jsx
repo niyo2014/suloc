@@ -8,7 +8,6 @@ import {
 } from 'lucide-react';
 import { useSystemStatus } from '../context/SystemContext';
 
-const API_BASE_URL = (import.meta.env.VITE_API_BASE_URL || '/api');
 
 const Home = () => {
     const { t, i18n } = useTranslation();
@@ -33,8 +32,8 @@ const Home = () => {
         const fetchData = async () => {
             try {
                 const [slidesRes, aboutRes] = await Promise.all([
-                    axios.get(`${(import.meta.env.VITE_API_BASE_URL || '/api')}/api/hero/slides`),
-                    axios.get(`${(import.meta.env.VITE_API_BASE_URL || '/api')}/api/about`)
+                    axios.get(`${API_BASE_URL}/api/hero/slides`),
+                    axios.get(`${API_BASE_URL}/api/about`)
                 ]);
                 setSlides(slidesRes.data);
                 setAboutData(aboutRes.data);
@@ -80,7 +79,7 @@ const Home = () => {
         e.preventDefault();
         setSubmitting(true);
         try {
-            await axios.post(`${(import.meta.env.VITE_API_BASE_URL || '/api')}/api/contact`, contactForm);
+            await axios.post(`${API_BASE_URL}/api/contact`, contactForm);
             setSubmitSuccess(true);
             setContactForm({ name: '', email: '', phone: '', service_type: '', message: '' });
             setTimeout(() => setSubmitSuccess(false), 5000);
@@ -118,7 +117,7 @@ const Home = () => {
                                 {/* Background Image */}
                                 <div className="absolute inset-0">
                                     <img
-                                        src={slide.image_url.startsWith('http') ? slide.image_url : `${(import.meta.env.VITE_API_BASE_URL || '/api')}${slide.image_url.startsWith('/') ? '' : '/'}${slide.image_url}`}
+                                        src={slide.image_url.startsWith('http') ? slide.image_url : `${API_BASE_URL}${slide.image_url.startsWith('/') ? '' : '/'}${slide.image_url}`}
                                         alt={slide.title}
                                         className="w-full h-full object-cover"
                                     />
@@ -208,7 +207,7 @@ const Home = () => {
                                 <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-suloc-blue/10 rounded-full blur-3xl"></div>
                                 <div className="relative rounded-[3rem] overflow-hidden shadow-2xl border-8 border-white">
                                     <img
-                                        src={aboutData.image_url?.startsWith('http') ? aboutData.image_url : `${(import.meta.env.VITE_API_BASE_URL || '/api')}${aboutData.image_url}`}
+                                        src={aboutData.image_url?.startsWith('http') ? aboutData.image_url : `${API_BASE_URL}${aboutData.image_url}`}
                                         alt="About SULOC"
                                         className="w-full aspect-[4/5] object-cover"
                                     />

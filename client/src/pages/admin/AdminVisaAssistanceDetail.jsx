@@ -15,7 +15,6 @@ import {
     Trash2
 } from 'lucide-react';
 
-const API_BASE_URL = (import.meta.env.VITE_API_BASE_URL || '/api');
 
 const AdminVisaAssistanceDetail = () => {
     const { id } = useParams();
@@ -63,9 +62,9 @@ const AdminVisaAssistanceDetail = () => {
         setLoading(true);
         try {
             const [reqRes, adminsRes, settingsRes] = await Promise.all([
-                axios.get(`${(import.meta.env.VITE_API_BASE_URL || '/api')}/api/visas/admin/assistance/${id}`, { withCredentials: true }),
-                axios.get(`${(import.meta.env.VITE_API_BASE_URL || '/api')}/api/admins`, { withCredentials: true }).catch(() => ({ data: [] })),
-                axios.get(`${(import.meta.env.VITE_API_BASE_URL || '/api')}/api/visas/admin/assistance/settings`, { withCredentials: true })
+                axios.get(`${API_BASE_URL}/api/visas/admin/assistance/${id}`, { withCredentials: true }),
+                axios.get(`${API_BASE_URL}/api/admins`, { withCredentials: true }).catch(() => ({ data: [] })),
+                axios.get(`${API_BASE_URL}/api/visas/admin/assistance/settings`, { withCredentials: true })
             ]);
 
             setRequest(reqRes.data);
@@ -99,7 +98,7 @@ const AdminVisaAssistanceDetail = () => {
         setErrorMsg('');
 
         try {
-            await axios.put(`${(import.meta.env.VITE_API_BASE_URL || '/api')}/api/visas/admin/assistance/${id}`, {
+            await axios.put(`${API_BASE_URL}/api/visas/admin/assistance/${id}`, {
                 status: formStatus,
                 admin_notes: adminNotes,
                 assigned_agent_id: assignedAgentId,
@@ -343,7 +342,7 @@ const AdminVisaAssistanceDetail = () => {
                                     {request.visa_assistance_docs.map(doc => (
                                         <a
                                             key={doc.id}
-                                            href={`${(import.meta.env.VITE_API_BASE_URL || '/api')}/uploads/visa_docs/${doc.file_path}`}
+                                            href={`${API_BASE_URL}/uploads/visa_docs/${doc.file_path}`}
                                             target="_blank"
                                             rel="noopener noreferrer"
                                             className="flex items-center p-3.5 border border-gray-100 rounded-2xl hover:bg-blue-50 transition group"

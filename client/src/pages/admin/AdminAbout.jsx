@@ -5,8 +5,6 @@ import {
     Info, Target, Eye, Star
 } from 'lucide-react';
 
- // API_BASE_URL refined
-
 const AdminAbout = () => {
     const [loading, setLoading] = useState(true);
     const [submitting, setSubmitting] = useState(false);
@@ -33,7 +31,7 @@ const AdminAbout = () => {
 
     const fetchAboutData = async () => {
         try {
-            const res = await axios.get(`${(import.meta.env.VITE_API_BASE_URL || '/api')}/api/about`);
+            const res = await axios.get(`${API_BASE_URL}/api/about`);
             if (res.data) {
                 setFormData({
                     title_fr: res.data.title_fr || '',
@@ -50,7 +48,7 @@ const AdminAbout = () => {
                     image: null
                 });
                 if (res.data.image_url) {
-                    setPreviewImage(res.data.image_url.startsWith('http') ? res.data.image_url : `${(import.meta.env.VITE_API_BASE_URL || '/api')}${res.data.image_url}`);
+                    setPreviewImage(res.data.image_url.startsWith('http') ? res.data.image_url : `${API_BASE_URL}${res.data.image_url}`);
                 }
             }
         } catch (error) {
@@ -80,7 +78,7 @@ const AdminAbout = () => {
         });
 
         try {
-            await axios.put(`${(import.meta.env.VITE_API_BASE_URL || '/api')}/api/about/admin`, data, {
+            await axios.put(`${API_BASE_URL}/api/about/admin`, data, {
                 withCredentials: true,
                 headers: {
                     'Content-Type': 'multipart/form-data'

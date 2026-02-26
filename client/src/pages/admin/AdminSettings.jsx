@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Save, Phone, Mail, MapPin, User, FileText, Calendar, CheckCircle2, AlertCircle } from 'lucide-react';
 
-const API_BASE_URL = (import.meta.env.VITE_API_BASE_URL || '/api');
 
 const AdminSettings = () => {
     const [settings, setSettings] = useState({
@@ -27,7 +26,7 @@ const AdminSettings = () => {
     const fetchSettings = async () => {
         setLoading(true);
         try {
-            const response = await axios.get(`${(import.meta.env.VITE_API_BASE_URL || '/api')}/api/settings`);
+            const response = await axios.get(`${API_BASE_URL}/api/settings`);
             // Merge with defaults to ensure all fields exist
             setSettings(prev => ({
                 ...prev,
@@ -56,7 +55,7 @@ const AdminSettings = () => {
         setErrorMsg('');
 
         try {
-            await axios.post(`${(import.meta.env.VITE_API_BASE_URL || '/api')}/api/settings/admin`, settings, {
+            await axios.post(`${API_BASE_URL}/api/settings/admin`, settings, {
                 withCredentials: true
             });
             setSuccessMsg('Paramètres enregistrés avec succès!');

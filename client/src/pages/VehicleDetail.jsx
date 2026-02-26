@@ -15,7 +15,7 @@ const VehicleDetail = () => {
     useEffect(() => {
         const fetchVehicle = async () => {
             try {
-                const response = await axios.get(`${(import.meta.env.VITE_API_BASE_URL || '/api')}/vehicles/${id}`);
+                const response = await axios.get(`${API_BASE_URL}/vehicles/${id}`);
                 setVehicle(response.data.vehicle);
             } catch (error) {
                 console.error('Error fetching vehicle:', error);
