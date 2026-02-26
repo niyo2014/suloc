@@ -12,13 +12,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/niyo2014/suloc_platform.git"
+    "url": "git+https://github.com/niyo2014/suloc.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/niyo2014/suloc_platform/issues"
+    "url": "https://github.com/niyo2014/suloc/issues"
   },
-  "homepage": "https://github.com/niyo2014/suloc_platform#readme"
+  "homepage": "https://github.com/niyo2014/suloc#readme"
 }
