@@ -15,3 +15,8 @@ This project is a web application for managing projects, services, and team memb
 ### 3. File Permissions (Manual Action Required)
 - **Issue:** The web server may not have the necessary permissions to write to the `uploads` and `uploads/project` directories.
 - **Action:** The permissions for the `uploads` and `uploads/project` directories should be set to `755`. This can be done through the cPanel file manager.
+
+admin login
+##### admin
+Username: admin
+Password: suloc#2026
