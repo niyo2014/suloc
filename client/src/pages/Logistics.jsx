@@ -1,3 +1,4 @@
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || '/api';
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Truck, Ship, Anchor, Package, Check, ArrowRight, ArrowLeft, MessageCircle } from 'lucide-react';
