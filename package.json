@@ -7,12 +7,27 @@
     "lib": "lib",
     "test": "tests"
   },
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "cd client && npm install && npm run build",
+    "postinstall": "cd server && npm install && npx prisma generate"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/niyo2014/suloc.git"
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "compression": "^1.8.1",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.6",
+    "dotenv": "^17.3.1",
+    "express": "^5.2.1",
+    "helmet": "^8.1.0",
+    "jsonwebtoken": "^9.0.3",
+    "multer": "^2.0.2",
+    "sharp": "^0.34.5",
+    "@prisma/client": "^5.22.0"
+  },
+  "devDependencies": {
+    "prisma": "^5.22.0"
   },
   "keywords": [],
   "author": "",

@@ -134,9 +134,14 @@ app.use((err, req, res, next) => {
     res.status(500).json({ error: 'Internal Server Error' });
 });
 
-// Start Server with error logging
-const server = app.listen(PORT, () => {
-    console.log(`Server started on port ${PORT}`);
-}).on('error', (err) => {
-    console.error('Server failed to start:', err);
-});
+// Export for Vercel
+export default app;
+
+// Start Server locally
+if (process.env.NODE_ENV !== 'production' && !process.env.VERCEL) {
+    app.listen(PORT, () => {
+        console.log(`Server started on port ${PORT}`);
+    }).on('error', (err) => {
+        console.error('Server failed to start:', err);
+    });
+}
