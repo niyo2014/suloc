@@ -7,11 +7,17 @@ if (!process.env.DATABASE_URL) {
 
 const prisma = new PrismaClient({
     errorFormat: 'minimal',
+    log: ['error', 'warn'],
 });
 
-// Optional: Soft check connection
-prisma.$connect().catch(err => {
-    console.error('Prisma failed to connect to database on startup:', err.message);
-});
+// Enhanced connection check
+prisma.$connect()
+    .then(() => {
+        console.log('Successfully connected to the database.');
+    })
+    .catch(err => {
+        console.error('DATABASE_CONNECTION_ERROR:', err.message);
+        console.error('Check if DATABASE_URL or DIRECT_URL environment variables are set correctly in Vercel.');
+    });
 
 export default prisma;

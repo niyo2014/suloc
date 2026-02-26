@@ -131,7 +131,11 @@ app.get('/api/content/home', async (req, res) => {
 // Global Error Handler
 app.use((err, req, res, next) => {
     console.error('Unhandled Error:', err);
-    res.status(500).json({ error: 'Internal Server Error' });
+    res.status(500).json({
+        error: 'Internal Server Error',
+        details: process.env.NODE_ENV === 'development' ? err.message : 'Please check server logs for details',
+        path: req.path
+    });
 });
 
 // Export for Vercel

@@ -11,7 +11,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "cd client && npm install && npm run build",
-    "postinstall": "cd server && npm install && npx prisma generate"
+    "postinstall": "prisma generate"
   },
   "dependencies": {
     "bcrypt": "^6.0.0",
@@ -24,11 +24,10 @@
     "jsonwebtoken": "^9.0.3",
     "multer": "^2.0.2",
     "sharp": "^0.34.5",
-    "@prisma/client": "^5.22.0"
-  },
-  "devDependencies": {
+    "@prisma/client": "^5.22.0",
     "prisma": "^5.22.0"
   },
+  "devDependencies": {},
   "keywords": [],
   "author": "",
   "license": "ISC",
