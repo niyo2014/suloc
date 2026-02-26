@@ -35,7 +35,7 @@ const Vehicles = () => {
 
     const fetchFilterOptions = async () => {
         try {
-            const response = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/vehicles/filters`);
+            const response = await axios.get(`${(import.meta.env.VITE_API_BASE_URL || '/api')}/vehicles/filters`);
             setFilterOptions(response.data);
         } catch (error) {
             console.error('Error fetching filter options:', error);
@@ -45,7 +45,7 @@ const Vehicles = () => {
     const fetchVehicles = async (filterParams = {}) => {
         setLoading(true);
         try {
-            const response = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/vehicles`, {
+            const response = await axios.get(`${(import.meta.env.VITE_API_BASE_URL || '/api')}/vehicles`, {
                 params: filterParams
             });
             setVehicles(response.data.vehicles || []);

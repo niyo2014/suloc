@@ -2,7 +2,7 @@ import React, { useState, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import axios from 'axios';
 
-const API_BASE_URL = '';
+const (import.meta.env.VITE_API_BASE_URL || '/api') = '';
 
 const VisaAssistance = () => {
     const { t } = useTranslation();
@@ -52,7 +52,7 @@ const VisaAssistance = () => {
         });
 
         try {
-            const response = await axios.post(`${API_BASE_URL}/api/visas/assistance`, data, {
+            const response = await axios.post(`${(import.meta.env.VITE_API_BASE_URL || '/api')}/api/visas/assistance`, data, {
                 headers: { 'Content-Type': 'multipart/form-data' }
             });
 

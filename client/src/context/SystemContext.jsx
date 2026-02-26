@@ -3,7 +3,7 @@ import axios from 'axios';
 
 const SystemContext = createContext(null);
 
-const API_BASE_URL = import.meta.env.VITE_API_URL || '';
+const (import.meta.env.VITE_API_BASE_URL || '/api') = import.meta.env.VITE_API_URL || '';
 
 export const SystemProvider = ({ children }) => {
     const [status, setStatus] = useState({
@@ -18,8 +18,8 @@ export const SystemProvider = ({ children }) => {
             const token = localStorage.getItem('token');
             const config = token ? { headers: { Authorization: `Bearer ${token}` } } : {};
             const [statusRes, settingsRes] = await Promise.all([
-                axios.get(`${API_BASE_URL}/api/system/status`, config),
-                axios.get(`${API_BASE_URL}/api/settings`)
+                axios.get(`${(import.meta.env.VITE_API_BASE_URL || '/api')}/api/system/status`, config),
+                axios.get(`${(import.meta.env.VITE_API_BASE_URL || '/api')}/api/settings`)
             ]);
             setStatus(statusRes.data);
             setSettings(settingsRes.data);

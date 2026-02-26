@@ -1,5 +1,5 @@
 import 'dotenv/config';
-import { PrismaClient } from './generated-prisma-client/index.js';
+import { PrismaClient } from '@prisma/client';
 
 if (!process.env.DATABASE_URL) {
     console.warn('DATABASE_URL is not defined. Prisma might fail.');

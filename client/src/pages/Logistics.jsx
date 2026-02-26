@@ -33,7 +33,7 @@ const Logistics = () => {
         e.preventDefault();
         setLoading(true);
         try {
-            const response = await axios.post(`${import.meta.env.VITE_API_BASE_URL}/logistics`, formData);
+            const response = await axios.post(`${(import.meta.env.VITE_API_BASE_URL || '/api')}/logistics`, formData);
             if (response.data.success) {
                 setSuccessData(response.data);
                 setStep(4); // Success step

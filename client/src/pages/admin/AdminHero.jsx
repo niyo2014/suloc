@@ -6,7 +6,7 @@ import {
     Eye, EyeOff
 } from 'lucide-react';
 
-const API_BASE_URL = import.meta.env.VITE_API_URL || '';
+const (import.meta.env.VITE_API_BASE_URL || '/api') = import.meta.env.VITE_API_URL || '';
 
 const AdminHero = () => {
     const [slides, setSlides] = useState([]);
@@ -37,7 +37,7 @@ const AdminHero = () => {
         // If it starts with img/ (legacy) or /img/, try to point to the main site root if possible, 
         // but for now, the backend doesn't serve it.
         // However, if we are in admin, it should ideally point to the backend or a proxy.
-        return `${API_BASE_URL}${url.startsWith('/') ? '' : '/'}${url}`;
+        return `${(import.meta.env.VITE_API_BASE_URL || '/api')}${url.startsWith('/') ? '' : '/'}${url}`;
     };
 
     useEffect(() => {
@@ -46,7 +46,7 @@ const AdminHero = () => {
 
     const fetchSlides = async () => {
         try {
-            const res = await axios.get(`${API_BASE_URL}/api/hero/admin/slides`, {
+            const res = await axios.get(`${(import.meta.env.VITE_API_BASE_URL || '/api')}/api/hero/admin/slides`, {
                 withCredentials: true
             });
             setSlides(res.data);
@@ -116,14 +116,14 @@ const AdminHero = () => {
 
         try {
             if (editingSlide) {
-                await axios.put(`${API_BASE_URL}/api/hero/admin/slides/${editingSlide.id}`, data, {
+                await axios.put(`${(import.meta.env.VITE_API_BASE_URL || '/api')}/api/hero/admin/slides/${editingSlide.id}`, data, {
                     withCredentials: true,
                     headers: {
                         'Content-Type': 'multipart/form-data'
                     }
                 });
             } else {
-                await axios.post(`${API_BASE_URL}/api/hero/admin/slides`, data, {
+                await axios.post(`${(import.meta.env.VITE_API_BASE_URL || '/api')}/api/hero/admin/slides`, data, {
                     withCredentials: true,
                     headers: {
                         'Content-Type': 'multipart/form-data'
@@ -144,7 +144,7 @@ const AdminHero = () => {
         if (!window.confirm('Êtes-vous sûr de vouloir supprimer ce slide ?')) return;
 
         try {
-            await axios.delete(`${API_BASE_URL}/api/hero/admin/slides/${id}`, {
+            await axios.delete(`${(import.meta.env.VITE_API_BASE_URL || '/api')}/api/hero/admin/slides/${id}`, {
                 withCredentials: true
             });
             fetchSlides();
@@ -155,7 +155,7 @@ const AdminHero = () => {
 
     const handleReorder = async (slideIds) => {
         try {
-            await axios.patch(`${API_BASE_URL}/api/hero/admin/slides/reorder`, { slideIds }, {
+            await axios.patch(`${(import.meta.env.VITE_API_BASE_URL || '/api')}/api/hero/admin/slides/reorder`, { slideIds }, {
                 withCredentials: true
             });
             fetchSlides();

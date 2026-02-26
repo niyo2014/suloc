@@ -3,6 +3,9 @@ import axios from 'axios';
 
 const AuthContext = createContext(null);
 
+const (import.meta.env.VITE_API_BASE_URL || '/api') = (import.meta.env.VITE_API_BASE_URL || '/api') || '/api';
+console.log('Effective (import.meta.env.VITE_API_BASE_URL || '/api'):', (import.meta.env.VITE_API_BASE_URL || '/api'));
+
 export const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
@@ -14,7 +17,7 @@ export const AuthProvider = ({ children }) => {
 
     const checkAuth = async () => {
         try {
-            const response = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/auth/me`, { withCredentials: true });
+            const response = await axios.get(`${(import.meta.env.VITE_API_BASE_URL || '/api')}/auth/me`, { withCredentials: true });
             if (response.data.user) {
                 setUser(response.data.user);
             }
@@ -27,7 +30,7 @@ export const AuthProvider = ({ children }) => {
 
     const login = async (username, password) => {
         try {
-            const response = await axios.post(`${import.meta.env.VITE_API_BASE_URL}/auth/login`, {
+            const response = await axios.post(`${(import.meta.env.VITE_API_BASE_URL || '/api')}/auth/login`, {
                 username,
                 password
             }, { withCredentials: true });
@@ -47,7 +50,7 @@ export const AuthProvider = ({ children }) => {
 
     const logout = async () => {
         try {
-            await axios.post(`${import.meta.env.VITE_API_BASE_URL}/auth/logout`, {}, { withCredentials: true });
+            await axios.post(`${(import.meta.env.VITE_API_BASE_URL || '/api')}/auth/logout`, {}, { withCredentials: true });
             setUser(null);
         } catch (error) {
             console.error('Logout error:', error);

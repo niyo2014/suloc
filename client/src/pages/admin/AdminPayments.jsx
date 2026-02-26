@@ -8,7 +8,7 @@ import {
 import { Link } from 'react-router-dom';
 import useSystemStatus from '../../hooks/useSystemStatus';
 
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+const (import.meta.env.VITE_API_BASE_URL || '/api') = import.meta.env.VITE_API_URL || 'http://localhost:5000';
 
 const AdminPayments = () => {
     const { isModuleFrozen } = useSystemStatus();
@@ -313,7 +313,7 @@ const AdminPayments = () => {
                                         <div className="flex items-center gap-4">
                                             <div className="w-12 h-12 rounded-2xl bg-gray-100 flex items-center justify-center text-suloc-blue font-black overflow-hidden shadow-sm ring-2 ring-white ring-offset-2">
                                                 {req.receiver_photo ? (
-                                                    <img src={req.receiver_photo.startsWith('http') ? req.receiver_photo : `${API_BASE_URL}${req.receiver_photo}`} className="w-full h-full object-cover" />
+                                                    <img src={req.receiver_photo.startsWith('http') ? req.receiver_photo : `${(import.meta.env.VITE_API_BASE_URL || '/api')}${req.receiver_photo}`} className="w-full h-full object-cover" />
                                                 ) : (
                                                     req.receiver_name.charAt(0)
                                                 )}
@@ -422,7 +422,7 @@ const AdminPayments = () => {
                                             if (selectedRequest.receiver_photo) {
                                                 const imageUrl = selectedRequest.receiver_photo.startsWith('http')
                                                     ? selectedRequest.receiver_photo
-                                                    : `${API_BASE_URL}${selectedRequest.receiver_photo}`;
+                                                    : `${(import.meta.env.VITE_API_BASE_URL || '/api')}${selectedRequest.receiver_photo}`;
                                                 setZoomedImageUrl(imageUrl);
                                                 setShowImageZoom(true);
                                             }
@@ -430,7 +430,7 @@ const AdminPayments = () => {
                                     >
                                         {selectedRequest.receiver_photo ? (
                                             <div className="relative w-full h-full">
-                                                <img src={selectedRequest.receiver_photo.startsWith('http') ? selectedRequest.receiver_photo : `${API_BASE_URL}${selectedRequest.receiver_photo}`} className="w-full h-full object-cover" />
+                                                <img src={selectedRequest.receiver_photo.startsWith('http') ? selectedRequest.receiver_photo : `${(import.meta.env.VITE_API_BASE_URL || '/api')}${selectedRequest.receiver_photo}`} className="w-full h-full object-cover" />
                                                 <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
                                                     <div className="text-white text-center">
                                                         <svg className="w-12 h-12 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -744,7 +744,7 @@ const AdminPayments = () => {
                                                 <div className="flex flex-col items-center gap-2">
                                                     <FileDown size={40} className="text-suloc-blue" />
                                                     <a
-                                                        href={selectedRequest.bank_slip_proof.startsWith('http') ? selectedRequest.bank_slip_proof : `${API_BASE_URL}${selectedRequest.bank_slip_proof}`}
+                                                        href={selectedRequest.bank_slip_proof.startsWith('http') ? selectedRequest.bank_slip_proof : `${(import.meta.env.VITE_API_BASE_URL || '/api')}${selectedRequest.bank_slip_proof}`}
                                                         target="_blank"
                                                         rel="noopener noreferrer"
                                                         className="text-xs font-black text-suloc-blue underline hover:text-navy transition"
@@ -754,9 +754,9 @@ const AdminPayments = () => {
                                                 </div>
                                             ) : (
                                                 <img
-                                                    src={selectedRequest.bank_slip_proof.startsWith('http') ? selectedRequest.bank_slip_proof : `${API_BASE_URL}${selectedRequest.bank_slip_proof}`}
+                                                    src={selectedRequest.bank_slip_proof.startsWith('http') ? selectedRequest.bank_slip_proof : `${(import.meta.env.VITE_API_BASE_URL || '/api')}${selectedRequest.bank_slip_proof}`}
                                                     className="w-full h-full object-contain cursor-pointer"
-                                                    onClick={() => { const imageUrl = selectedRequest.bank_slip_proof.startsWith('http') ? selectedRequest.bank_slip_proof : `${API_BASE_URL}${selectedRequest.bank_slip_proof}`; setZoomedImageUrl(imageUrl); setShowImageZoom(true); }}
+                                                    onClick={() => { const imageUrl = selectedRequest.bank_slip_proof.startsWith('http') ? selectedRequest.bank_slip_proof : `${(import.meta.env.VITE_API_BASE_URL || '/api')}${selectedRequest.bank_slip_proof}`; setZoomedImageUrl(imageUrl); setShowImageZoom(true); }}
                                                 />
                                             )}
                                         </div>

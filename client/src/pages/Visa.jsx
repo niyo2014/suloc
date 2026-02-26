@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import axios from 'axios';
 
-const API_BASE_URL = '';
+const (import.meta.env.VITE_API_BASE_URL || '/api') = '';
 
 const Visa = () => {
     const { t, i18n } = useTranslation();
@@ -19,7 +19,7 @@ const Visa = () => {
 
     const fetchVisas = async () => {
         try {
-            const response = await axios.get(`${API_BASE_URL}/api/visas`);
+            const response = await axios.get(`${(import.meta.env.VITE_API_BASE_URL || '/api')}/api/visas`);
             setVisas(response.data);
         } catch (error) {
             console.error('Error fetching visas:', error);
