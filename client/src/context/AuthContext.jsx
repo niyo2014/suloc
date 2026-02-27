@@ -1,4 +1,4 @@
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || '/api';
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || '';
 import React, { createContext, useState, useContext, useEffect } from 'react';
 import axios from 'axios';
 
@@ -15,7 +15,7 @@ export const AuthProvider = ({ children }) => {
 
     const checkAuth = async () => {
         try {
-            const response = await axios.get(`${API_BASE_URL}/auth/me`, { withCredentials: true });
+            const response = await axios.get(`${API_BASE_URL}/api/auth/me`, { withCredentials: true });
             if (response.data.user) {
                 setUser(response.data.user);
             }
@@ -28,7 +28,7 @@ export const AuthProvider = ({ children }) => {
 
     const login = async (username, password) => {
         try {
-            const response = await axios.post(`${API_BASE_URL}/auth/login`, {
+            const response = await axios.post(`${API_BASE_URL}/api/auth/login`, {
                 username,
                 password
             }, { withCredentials: true });
@@ -48,7 +48,7 @@ export const AuthProvider = ({ children }) => {
 
     const logout = async () => {
         try {
-            await axios.post(`${API_BASE_URL}/auth/logout`, {}, { withCredentials: true });
+            await axios.post(`${API_BASE_URL}/api/auth/logout`, {}, { withCredentials: true });
             setUser(null);
         } catch (error) {
             console.error('Logout error:', error);
