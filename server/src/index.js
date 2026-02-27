@@ -91,21 +91,6 @@ app.get('/api/health-no-db', (req, res) => {
     });
 });
 
-// Routes
-app.use('/api/auth', authRoutes);
-app.use('/api/logic', logicRoutes);
-app.use('/api/images', imageRoutes);
-app.use('/api/vehicles', vehicleRoutes);
-app.use('/api/visas', visaRoutes);
-app.use('/api/logistics', logisticsRoutes);
-app.use('/api/payment', paymentRoutes);
-app.use('/api/hero', heroRoutes);
-app.use('/api/about', aboutRoutes);
-app.use('/api/contact', contactRoutes);
-app.use('/api/settings', settingsRoutes);
-app.use('/api/users', userRoutes);
-app.use('/api/system', systemRoutes);
-
 // Detailed Content Route
 app.get('/api/content/home', async (req, res) => {
     try {

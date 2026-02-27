@@ -20,10 +20,6 @@
         },
         {
             "source": "/(.*)",
-            "destination": "/client/$1"
-        },
-        {
-            "source": "/(.*)",
             "destination": "/client/index.html"
         }
     ]
